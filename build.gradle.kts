@@ -23,5 +23,6 @@ tasks {
 
   shadowJar {
     manifest.attributes["Main-Class"] = "me.backword.MCServerCreatorKt"
+    archiveFileName.set("MCServerCreator.jar")
   }
 }
