@@ -5,6 +5,7 @@ import java.io.File
 import java.net.URLDecoder
 import java.nio.file.Files
 import java.nio.file.Path
+import java.nio.file.StandardCopyOption
 
 private class MCServerCreator {
   companion object {
@@ -61,7 +62,7 @@ private class MCServerCreator {
   private fun copyFile(name: String, destination: Path) {
     destination.toFile().parentFile.mkdirs()
     MCServerCreator::class.java.getResourceAsStream("/$name").use {
-      Files.copy(it!!, destination)
+      Files.copy(it!!, destination, StandardCopyOption.REPLACE_EXISTING)
     }
   }
 

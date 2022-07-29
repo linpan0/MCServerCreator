@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "me.backword"
-version = "2"
+version = "3"
 
 repositories {
   mavenCentral()
