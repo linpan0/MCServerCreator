@@ -1,10 +1,10 @@
 plugins {
-  kotlin("jvm").version("1.7.10")
-  id("com.github.johnrengelman.shadow").version("7.1.2")
+  kotlin("jvm").version("1.9.22")
+  id("com.github.johnrengelman.shadow").version("8.1.1")
 }
 
 group = "me.backword"
-version = "3"
+version = "4"
 
 repositories {
   mavenCentral()
@@ -12,8 +12,8 @@ repositories {
 
 dependencies {
   implementation(kotlin("stdlib"))
-  implementation("com.fasterxml.jackson.core:jackson-core:2.13.3")
-  implementation("com.fasterxml.jackson.core:jackson-databind:2.13.3")
+  implementation("com.fasterxml.jackson.core:jackson-core:2.16.1")
+  implementation("com.fasterxml.jackson.core:jackson-databind:2.16.1")
 }
 
 tasks {

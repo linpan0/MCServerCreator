@@ -12,8 +12,7 @@ private class MCServerCreator {
     private val MAPPER = ObjectMapper()
     private const val VERSIONS_CURL = "curl -X GET \"https://api.papermc.io/v2/projects/paper\""
     private const val BUILDS_CURL = "curl -X GET \"https://api.papermc.io/v2/projects/paper/versions/%s/builds\""
-    private const val DOWNLOAD_CURL =
-      "curl -X GET \"https://api.papermc.io/v2/projects/paper/versions/%s/builds/%s/downloads/%s\" -o \"%s\""
+    private const val DOWNLOAD_CURL = "curl -X GET \"https://api.papermc.io/v2/projects/paper/versions/%s/builds/%s/downloads/%s\" -o \"%s\""
   }
 
   fun start() {
@@ -28,7 +27,7 @@ private class MCServerCreator {
   private fun queryVersion(): String {
     while (true) {
       print("Please enter a version (${versions().joinToString()}): ")
-      val version = readLine() ?: continue
+      val version = readlnOrNull() ?: continue
       if (!validateVersion(version)) continue
       return version
     }
@@ -39,7 +38,7 @@ private class MCServerCreator {
   private fun queryFileDir(): String {
     while (true) {
       print("Please enter a file directory to set up the server (Uses the current one if empty): ")
-      val inputDir = readLine() ?: continue
+      val inputDir = readlnOrNull() ?: continue
       return inputDir.ifEmpty {
         var dir = File(MCServerCreator::class.java.protectionDomain.codeSource.location.toURI()).parentFile.path
         dir = URLDecoder.decode(dir, "UTF-8")
@@ -66,7 +65,7 @@ private class MCServerCreator {
     }
   }
 
-  private fun run(cmd: String) = Runtime.getRuntime().exec(cmd).inputReader()
+  private fun run(cmd: String) = Runtime.getRuntime().exec(arrayOf(cmd)).inputReader()
 }
 
 fun main() = MCServerCreator().start()
