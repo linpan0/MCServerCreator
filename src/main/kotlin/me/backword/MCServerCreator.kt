@@ -65,7 +65,7 @@ private class MCServerCreator {
     }
   }
 
-  private fun run(cmd: String) = Runtime.getRuntime().exec(arrayOf(cmd)).inputReader()
+  private fun run(cmd: String) = Runtime.getRuntime().exec(cmd).inputReader()
 }
 
 fun main() = MCServerCreator().start()
