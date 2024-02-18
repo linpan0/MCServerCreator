@@ -22,6 +22,7 @@ private class MCServerCreator {
     downloadJar(version, latestBuild, fileDir)
     copyFile("eula.txt", Path.of(fileDir, "eula.txt"))
     copyFile("run.bat", Path.of(fileDir, "run.bat"))
+    copyFile("run.sh", Path.of(fileDir, "run.sh"))
   }
 
   private fun queryVersion(): String {
